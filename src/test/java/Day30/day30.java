@@ -30,6 +30,26 @@ public class day30 {
         driver.switchTo().frame(frame2);
         driver.findElement(By.xpath("//input[@name='mytext2']")).sendKeys("Pandu");
 
+        driver.switchTo().defaultContent();
+
+        // Frame 3 (Frame inside the frame)
+
+        WebElement frame3 = driver.findElement(By.xpath("//frame[@src='frame_3.html']"));
+        driver.switchTo().frame(frame3);
+        driver.findElement(By.xpath("//input[@name='mytext3']")).sendKeys("MLFW");
+
+        // Inner Frame from Frane 3
+
+        driver.switchTo().frame(0);
+
+        driver.findElement(By.xpath("//div[@id='i9']//div[@class='AB7Lab Id5V1']")).click();
+
+        driver.findElement(By.xpath("//div[@id='i21']//div[@class='uHMk6b fsHoPb']")).click();
+
+        driver.findElement(By.xpath(" //div[@id='i24']//div[@class='uHMk6b fsHoPb']")).click();
+
+        driver.findElement(By.xpath("//span[contains(text(),'Next')]")).click();
+
 
     }
 }
