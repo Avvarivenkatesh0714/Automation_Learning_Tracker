@@ -37,6 +37,5 @@ public class CheckBoxes {
         for (int i = start; i < len; i++){
             elements.get(i).click();
         }
-
     }
 }
