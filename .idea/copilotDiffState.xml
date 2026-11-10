@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="/DynamicWebTable (snapshot).java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="/DynamicWebTable (snapshot).java" />
+              <option name="originalContent" value="package Day33;&#10;&#10;import Utilities.WebLoader;&#10;import org.openqa.selenium.By;&#10;import org.openqa.selenium.WebDriver;&#10;import org.openqa.selenium.WebElement;&#10;&#10;import java.util.List;&#10;&#10;public class DynamicWebTable {&#10;    public static void main(String[] args) {&#10;        WebDriver driver = WebLoader.getDriver();&#10;&#10;        List&lt;WebElement&gt; total_pages = driver.findElements(By.xpath(&quot;//ul[@class='pagination']//li&quot;));&#10;        int pages = total_pages.size();&#10;&#10;        List&lt;WebElement&gt; total_rows = driver.findElements(By.xpath(&quot;//table[@id='productTable']//tbody//tr&quot;));&#10;        int rows = total_rows.size();&#10;&#10;        for(int i=1; i&lt;=rows; i++){&#10;            for(int j=1;j&lt;=pages;j++){&#10;                driver.findElement(By.xpath(&quot;//table[@id='productTable']//tbody//tr[&quot;+i+&quot;]//td[4]&quot;)).click();&#10;            }&#10;        }&#10;&#10;    }&#10;}&#10;" />
+              <option name="updatedContent" value="package Day33;&#10;&#10;import Utilities.WebLoader;&#10;import org.openqa.selenium.By;&#10;import org.openqa.selenium.WebDriver;&#10;import org.openqa.selenium.WebElement;&#10;&#10;import java.util.List;&#10;&#10;public class DynamicWebTable {&#10;    public static void main(String[] args) throws InterruptedException {&#10;        WebDriver driver = WebLoader.getDriver();&#10;&#10;        while (true) {&#10;            List&lt;WebElement&gt; checkboxes = driver.findElements(By.xpath(&quot;//table[@id='productTable']//tbody//input[@type='checkbox']&quot;));&#10;&#10;            for (WebElement checkbox : checkboxes) {&#10;                if (!checkbox.isSelected()) {&#10;                    checkbox.click();&#10;                }&#10;            }&#10;&#10;            List&lt;WebElement&gt; pageLinks = driver.findElements(By.xpath(&quot;//ul[@id='pagination']//a&quot;));&#10;            if (pageLinks.isEmpty()) {&#10;                break;&#10;            }&#10;&#10;            String activePageText = driver.findElement(By.xpath(&quot;//ul[@id='pagination']//a[@class='active']&quot;)).getText();&#10;            int activePage = Integer.parseInt(activePageText.trim());&#10;&#10;            if (activePage &gt;= pageLinks.size()) {&#10;                break;&#10;            }&#10;&#10;            driver.findElement(By.xpath(&quot;//ul[@id='pagination']//a[not(contains(@class, 'active'))][1]&quot;)).click();&#10;            Thread.sleep(2000);&#10;        }&#10;&#10;        driver.quit();&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
