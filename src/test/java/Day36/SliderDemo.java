@@ -32,5 +32,6 @@ public class SliderDemo {
         act.dragAndDropBy(max_slider, -200, 249).perform();
         System.out.println("After dragged Locations of Min-Slider is: "+max_slider.getLocation());
 
+        driver.quit();
     }
 }
